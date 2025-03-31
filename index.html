@@ -61,7 +61,7 @@
             margin-top: 30px;
         }
 
-        .buy-btn, .sell-btn {
+        .buy-btn, .sell-btn, .farming-btn {
             background: linear-gradient(45deg, #ff007a, #ff9d00);
             border: none;
             color: white;
@@ -74,7 +74,7 @@
             box-shadow: 0 0 15px rgba(255, 0, 122, 0.7);
         }
 
-        .buy-btn:hover, .sell-btn:hover {
+        .buy-btn:hover, .sell-btn:hover, .farming-btn:hover {
             background: linear-gradient(45deg, #00c8ff, #ff007a);
             transform: scale(1.05);
         }
@@ -104,6 +104,7 @@
         <div class="button-container">
             <button class="buy-btn" onclick="goToSite('buy')">Buy DCU</button>
             <button class="sell-btn" onclick="goToSite('sell')">Sell DCU</button>
+            <button class="farming-btn" onclick="goToSite('farming')">Farming</button>
         </div>
     </div>
 
@@ -118,11 +119,13 @@
             document.getElementById('dcuAmount').textContent = dcu;
         }
 
-        // Redirect to the specified URL for Buy/Sell action
+        // Redirect to the specified URL for Buy/Sell/Farming action
         function goToSite(action) {
             if (action === 'buy') {
                 window.location.href = "https://carrotsusu.github.io/Items-world/";
             } else if (action === 'sell') {
+                window.location.href = "https://carrotsusu.github.io/Items-world/";
+            } else if (action === 'farming') {
                 window.location.href = "https://carrotsusu.github.io/Items-world/";
             }
         }
