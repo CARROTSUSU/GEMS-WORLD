@@ -14,21 +14,17 @@
             text-align: center;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
         header {
             padding: 50px;
-            background: linear-gradient(45deg, #6a00f4, #00c8ff);
-            border-bottom: 2px solid #fff;
+            background: linear-gradient(45deg, #ff6a00, #ff007a);
+            border-bottom: 3px solid #fff;
+            box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
         }
 
         header h1 {
             font-size: 3rem;
             margin: 0;
+            text-shadow: 0 0 15px #ff007a, 0 0 30px #ff6a00;
         }
 
         .intro-text {
@@ -37,34 +33,32 @@
             font-weight: lighter;
         }
 
-        .dcu-box {
-            background: rgba(0, 0, 0, 0.8);
+        .dcu-display {
+            background: rgba(0, 0, 0, 0.7);
             border-radius: 15px;
             padding: 40px;
             margin-top: 50px;
-            box-shadow: 0 0 15px rgba(0, 204, 255, 0.6);
+            box-shadow: 0 0 30px rgba(0, 204, 255, 0.8);
         }
 
-        .dcu-box h2 {
+        .dcu-display h2 {
             font-size: 2rem;
             color: #00c8ff;
             margin-bottom: 20px;
+            text-shadow: 0 0 15px #00c8ff, 0 0 30px #00c8ff;
         }
 
-        .dcu-input {
-            background-color: #111;
+        .dcu-amount {
+            font-size: 2rem;
             color: #00c8ff;
-            border: 2px solid #00c8ff;
-            border-radius: 10px;
-            padding: 10px 20px;
-            font-size: 1.5rem;
-            width: 250px;
-            margin-bottom: 20px;
+            font-weight: bold;
+            text-shadow: 0 0 15px #00c8ff, 0 0 30px #00c8ff;
         }
 
         .button-container {
             display: flex;
             justify-content: space-around;
+            margin-top: 30px;
         }
 
         .buy-btn, .sell-btn {
@@ -76,11 +70,13 @@
             cursor: pointer;
             border-radius: 25px;
             width: 150px;
-            transition: background 0.3s ease-in-out;
+            transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+            box-shadow: 0 0 15px rgba(255, 0, 122, 0.7);
         }
 
         .buy-btn:hover, .sell-btn:hover {
             background: linear-gradient(45deg, #00c8ff, #ff007a);
+            transform: scale(1.05);
         }
 
         footer {
@@ -90,26 +86,24 @@
             font-size: 1rem;
             color: #888;
         }
+
     </style>
 </head>
 <body>
 
     <header>
-        <div class="container">
-            <h1>Gems World</h1>
-            <p class="intro-text">Welcome to the future of trading with Digital Currency Unit (DCU). Buy or sell DCU in a futuristic environment.</p>
-        </div>
+        <h1>Gems World</h1>
+        <p class="intro-text">Explore and trade your Digital Currency Unit (DCU) in a futuristic environment.</p>
     </header>
 
-    <div class="container">
-        <div class="dcu-box">
-            <h2>Digital Currency Unit (DCU)</h2>
-            <p>Enter the amount of DCU you wish to buy or sell (up to 13 digits):</p>
-            <input class="dcu-input" type="text" id="dcuAmount" placeholder="Enter DCU amount" maxlength="13">
-            <div class="button-container">
-                <button class="buy-btn" onclick="handleTransaction('buy')">Buy DCU</button>
-                <button class="sell-btn" onclick="handleTransaction('sell')">Sell DCU</button>
-            </div>
+    <div class="dcu-display">
+        <h2>Digital Currency Unit (DCU)</h2>
+        <p>Current DCU Available:</p>
+        <div class="dcu-amount" id="dcuAmount">0000000000000</div>
+
+        <div class="button-container">
+            <button class="buy-btn" onclick="goToSite('buy')">Buy DCU</button>
+            <button class="sell-btn" onclick="goToSite('sell')">Sell DCU</button>
         </div>
     </div>
 
@@ -118,22 +112,23 @@
     </footer>
 
     <script>
-        function handleTransaction(action) {
-            const dcuAmount = document.getElementById('dcuAmount').value;
-            if (dcuAmount === "" || isNaN(dcuAmount) || dcuAmount.length > 13) {
-                alert("Please enter a valid 13-digit DCU amount.");
-                return;
-            }
-
-            let message = "";
-            if (action === "buy") {
-                message = `You are buying ${dcuAmount} DCU.`;
-            } else if (action === "sell") {
-                message = `You are selling ${dcuAmount} DCU.`;
-            }
-
-            alert(message);
+        // Generate a random DCU value with 13 digits
+        function generateDCUAmount() {
+            const dcu = (Math.random() * 1e13).toFixed(0);  // Generate a 13-digit random number
+            document.getElementById('dcuAmount').textContent = dcu;
         }
+
+        // Redirect to the specified URL for Buy/Sell action
+        function goToSite(action) {
+            if (action === 'buy') {
+                window.location.href = "https://carrotsusu.github.io/Items-world/";
+            } else if (action === 'sell') {
+                window.location.href = "https://carrotsusu.github.io/Items-world/";
+            }
+        }
+
+        // Call the function to generate a random DCU amount when the page loads
+        window.onload = generateDCUAmount;
     </script>
 
 </body>
